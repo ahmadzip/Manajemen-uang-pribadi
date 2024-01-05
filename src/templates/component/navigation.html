@@ -1,0 +1,129 @@
+<header class="shadow-md font-sans">
+  <div
+    class="flex flex-wrap items-center justify-between gap-4 px-10 py-4 relative bg-white min-h-[70px]"
+  >
+    <a href="javascript:void(0)"><img src="" alt="logo" class="w-36" /> </a>
+    <div class="flex max-lg:ml-auto lg:order-1">
+      <button id="toggle" class="lg:hidden">
+        <svg
+          class="w-7 h-7"
+          fill="#000"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+      </button>
+    </div>
+    <ul
+      id="collapseMenu"
+      class="lg:!flex lg:space-x-4 max-lg:space-y-2 max-lg:hidden max-lg:py-4 max-lg:w-full"
+    >
+      <li class="max-lg:border-b max-lg:py-2 px-3 max-lg:rounded">
+        <a
+          href="javascript:void(0)"
+          class="lg:hover:text-[#007bff] text-[#007bff] block font-semibold text-[15px]"
+          >Home</a
+        >
+      </li>
+      <li class="max-lg:border-b max-lg:py-2 px-3 max-lg:rounded">
+        <a
+          href="javascript:void(0)"
+          class="lg:hover:text-[#007bff] text-[#333] block font-semibold text-[15px]"
+          >Team</a
+        >
+      </li>
+      <li class="max-lg:border-b max-lg:py-2 px-3 max-lg:rounded">
+        <a
+          href="javascript:void(0)"
+          class="lg:hover:text-[#007bff] text-[#333] block font-semibold text-[15px]"
+          >Feature</a
+        >
+      </li>
+      <li class="max-lg:border-b max-lg:py-2 px-3 max-lg:rounded">
+        <a
+          href="javascript:void(0)"
+          class="lg:hover:text-[#007bff] text-[#333] block font-semibold text-[15px]"
+          >Blog</a
+        >
+      </li>
+      <li class="max-lg:border-b max-lg:py-2 px-3 max-lg:rounded">
+        <a
+          href="javascript:void(0)"
+          class="lg:hover:text-[#007bff] text-[#333] block font-semibold text-[15px]"
+          >About</a
+        >
+      </li>
+      <li class="max-lg:border-b max-lg:py-2 px-3 max-lg:rounded">
+        <a
+          href="javascript:void(0)"
+          class="lg:hover:text-[#007bff] text-[#333] block font-semibold text-[15px]"
+          >Contact</a
+        >
+      </li>
+      <li class="max-lg:border-b max-lg:py-2 px-3 max-lg:rounded">
+        <a
+          href="javascript:void(0)"
+          class="lg:hover:text-[#007bff] text-[#333] block font-semibold text-[15px]"
+          >Source</a
+        >
+      </li>
+      <li class="max-lg:border-b max-lg:py-2 px-3 max-lg:rounded">
+        <a
+          href="javascript:void(0)"
+          class="lg:hover:text-[#007bff] text-[#333] block font-semibold text-[15px]"
+          >Partner</a
+        >
+      </li>
+      <li class="max-lg:border-b max-lg:py-2 px-3 max-lg:rounded">
+        <a
+          href="javascript:void(0)"
+          class="lg:hover:text-[#007bff] text-[#333] block font-semibold text-[15px]"
+          >More</a
+        >
+      </li>
+    </ul>
+    <a
+      href="{{ url_for('auth.logout') }}"
+      class="lg:hover:text-[#007bff] text-[#333] block font-semibold text-[15px]"
+      >Logout</a
+    >
+  </div>
+</header>
+<script>
+  var toggleBtn = document.getElementById("toggle");
+  function handleClick() {
+    if (collapseMenu.style.display === "block") {
+      collapseMenu.style.display = "none";
+      collapseMenu.style.removeProperty("position");
+      collapseMenu.style.removeProperty("z-index");
+      collapseMenu.style.removeProperty("top");
+      collapseMenu.style.removeProperty("left");
+      collapseMenu.style.removeProperty("width");
+      collapseMenu.style.removeProperty("background-color");
+    } else {
+      collapseMenu.style.display = "block";
+      collapseMenu.style.position = "absolute";
+      collapseMenu.style.zIndex = "999";
+      collapseMenu.style.top = "70px";
+      collapseMenu.style.left = "0";
+      collapseMenu.style.width = "100%";
+      collapseMenu.style.backgroundColor = "#fff";
+    }
+  }
+  //add listener change size
+  window.addEventListener("resize", function () {
+    collapseMenu.style.display = "none";
+    collapseMenu.style.removeProperty("position");
+    collapseMenu.style.removeProperty("z-index");
+    collapseMenu.style.removeProperty("top");
+    collapseMenu.style.removeProperty("left");
+    collapseMenu.style.removeProperty("width");
+    collapseMenu.style.removeProperty("background-color");
+  });
+  toggleBtn.addEventListener("click", handleClick);
+</script>

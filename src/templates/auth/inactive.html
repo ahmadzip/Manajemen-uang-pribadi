@@ -1,0 +1,11 @@
+{% extends "layout.html" %} {% block content %}
+
+<div class="text-center">
+  <h1>Welcome!</h1>
+  <p>
+    Resend confirmation email?&nbsp;&nbsp;
+    <a href="{{ url_for('auth.resend_confirmation') }}">Resend</a>.
+  </p>
+</div>
+
+{% endblock %}

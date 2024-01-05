@@ -1,0 +1,10 @@
+Flask
+Flask-Bcrypt
+Flask-Login
+Flask-Mail
+Flask-Migrate
+Flask-SQLAlchemy
+Flask-WTF
+python-decouple
+mysqlclient
+email-validator

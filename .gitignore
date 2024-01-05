@@ -1,0 +1,10 @@
+*.pyc
+*.sqlite
+.DS_Store
+.env
+.coverage
+env
+migrations
+tmp
+__pycache__
+env.sh
