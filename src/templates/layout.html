@@ -13,9 +13,13 @@
       href="https://kit-pro.fontawesome.com/releases/v5.15.1/css/pro.min.css"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/global.css') }}"
+    />
     {% block css %}{% endblock %}
   </head>
-  <body>
+  <body class="bg-slate-100">
     <div>
       {% if show_navbar|default(true) %} {% include "component/navigation.html"
       %} {% endif %}
