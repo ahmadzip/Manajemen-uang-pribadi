@@ -6,7 +6,6 @@ import unittest
 import getpass
 from datetime import datetime
 
-
 cli = FlaskGroup(app)
 
 

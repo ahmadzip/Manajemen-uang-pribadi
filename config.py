@@ -3,6 +3,7 @@ from decouple import config
 
 DATABASE_URI = config("DATABASE_URL")
 
+
 class Config(object):
     DEBUG = False
     TESTING = False
@@ -14,7 +15,8 @@ class Config(object):
     WTF_CSRF_ENABLED = True
     DEBUG_TB_ENABLED = False
     DEBUG_TB_INTERCEPT_REDIRECTS = False
-    SECURITY_PASSWORD_SALT = config("SECURITY_PASSWORD_SALT", default="very-important")
+    SECURITY_PASSWORD_SALT = config(
+        "SECURITY_PASSWORD_SALT", default="very-important")
     MAIL_DEFAULT_SENDER = "noreply.managementuang@gmail.com"
     MAIL_SERVER = "smtp.gmail.com"
     MAIL_PORT = 465
@@ -30,6 +32,7 @@ class DevelopmentConfig(Config):
     DEBUG = True
     WTF_CSRF_ENABLED = False
     DEBUG_TB_ENABLED = True
+
 
 class ProductionConfig(Config):
     DEBUG = False
