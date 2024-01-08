@@ -34,7 +34,8 @@
         />
         {% endfor %} {% endif %} {% endwith %}
       </div>
-      {% block content %}{% endblock %} {% include "component/footer.html" %}
+      {% block content %}{% endblock %} {% if show_navbar|default(true) %} {%
+      include "component/footer.html" %} {% endif %}
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script

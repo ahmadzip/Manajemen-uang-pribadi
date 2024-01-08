@@ -9,6 +9,7 @@ from src.lib.email import send_email
 from ..lib.forms import LoginForm, RegisterForm
 auth_bp = Blueprint("auth", __name__)
 
+
 @auth_bp.route("/register", methods=["GET", "POST"])
 @logout_required
 def register():
@@ -18,14 +19,16 @@ def register():
         db.session.add(user)
         db.session.commit()
         token = generate_token(user.email)
-        confirm_url = url_for("auth.confirm_email", token=token, _external=True)
-        html = render_template("auth/confirm_email.html", confirm_url=confirm_url)
+        confirm_url = url_for("auth.confirm_email",
+                              token=token, _external=True)
+        html = render_template("auth/confirm_email.html",
+                               confirm_url=confirm_url)
         subject = "Please confirm your email"
         send_email(user.email, subject, html)
         login_user(user)
         flash("A confirmation email has been sent via email.", "success")
         return redirect(url_for("auth.inactive"))
-    return render_template("auth/register.html", form=form)
+    return render_template("auth/register.html", form=form, show_navbar=False)
 
 
 @auth_bp.route("/login", methods=["GET", "POST"])
@@ -42,12 +45,14 @@ def login():
             return render_template("auth/login.html", form=form, show_navbar=False)
     return render_template("auth/login.html", form=form, show_navbar=False)
 
+
 @auth_bp.route("/logout")
 @login_required
 def logout():
     logout_user()
     flash("You were logged out.", "success")
     return redirect(url_for("auth.login"))
+
 
 @auth_bp.route("/confirm/<token>")
 @login_required
@@ -67,12 +72,14 @@ def confirm_email(token):
         flash("The confirmation link is invalid or has expired.", "danger")
     return redirect(url_for("dashboard.home"))
 
+
 @auth_bp.route("/inactive")
 @login_required
 def inactive():
     if current_user.is_confirmed:
         return redirect(url_for("dashboard.home"))
     return render_template("auth/inactive.html")
+
 
 @auth_bp.route("/resend")
 @login_required
