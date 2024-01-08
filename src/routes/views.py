@@ -5,14 +5,23 @@ from src.lib.auth_checks import check_is_confirmed
 
 dashboardBp = Blueprint("dashboard", __name__)
 
+
 @dashboardBp.route("/")
 @login_required
 @check_is_confirmed
 def home():
     return render_template("dashboard/index.html")
 
-@dashboardBp.route("/profile")
+
+@dashboardBp.route("/pemasukan")
 @login_required
 @check_is_confirmed
-def profile():
-    return render_template("dashboard/profile.html")
+def pemasukan():
+    return render_template("dashboard/pemasukan.html")
+
+
+@dashboardBp.route("/pengeluaran")
+@login_required
+@check_is_confirmed
+def pengeluaran():
+    return render_template("dashboard/pengeluaran.html")

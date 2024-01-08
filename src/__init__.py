@@ -16,7 +16,7 @@ mail = Mail(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-from src.auth.auth import auth_bp
+from src.routes.auth import auth_bp
 from src.routes.views import dashboardBp
 
 app.register_blueprint(auth_bp)
@@ -30,3 +30,4 @@ login_manager.login_message_category = "danger"
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.filter(User.id == int(user_id)).first()
+

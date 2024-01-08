@@ -23,27 +23,33 @@
     </div>
     <ul
       id="collapseMenu"
-      class="mr-24 lg:!flex lg:space-x-4 max-lg:space-y-2 max-lg:hidden max-lg:py-4 max-lg:w-full justify-center flex-grow"
+      class="mr-24 lg:flex lg:space-x-4 max-lg:space-y-2 max-lg:hidden max-lg:py-4 max-lg:w-full justify-center flex-grow"
     >
       <li
         class="max-lg:border-b max-lg:py-2 px-3 max-lg:rounded sm:ml-5 border-b-2 p-3 border-[#007bff]"
       >
-        <a href="javascript:void(0)" class="block font-semibold text-[15px]"
+        <a
+          href="{{ url_for('dashboard.pengeluaran') }}"
+          class="block font-semibold text-[15px]"
           >Pengeluaran</a
         >
       </li>
       <li
         class="max-lg:border-b max-lg:py-2 px-3 max-lg:rounded sm:ml-5 border-b-2 p-3 border-[#007bff]"
       >
-        <a href="javascript:void(0)" class="block font-semibold text-[15px]"
+        <a
+          href="{{ url_for('dashboard.home') }}"
+          class="block font-semibold text-[15px]"
           >Home</a
         >
       </li>
       <!-- JIKA AKTIF -->
       <li
-        class="max-lg:border-b max-lg:py-2 px-3 max-lg:rounded sm:ml-5 border-b-2 p-3 border-emerald-500 text-emerald-500"
+        class="max-lg:border-b max-lg:py-2 px-3 max-lg:rounded sm:ml-5 border-b-2 p-3 border-[#007bff]"
       >
-        <a href="javascript:void(0)" class="block font-semibold text-[15px]"
+        <a
+          href="{{ url_for('dashboard.pemasukan') }}"
+          class="block font-semibold text-[15px]"
           >Pemasukan</a
         >
       </li>
