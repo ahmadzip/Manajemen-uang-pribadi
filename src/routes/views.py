@@ -13,13 +13,6 @@ def home():
     return render_template("dashboard/index.html")
 
 
-@dashboardBp.route("/pemasukan")
-@login_required
-@check_is_confirmed
-def pemasukan():
-    return render_template("dashboard/pemasukan.html")
-
-
 @dashboardBp.route("/pengeluaran")
 @login_required
 @check_is_confirmed
