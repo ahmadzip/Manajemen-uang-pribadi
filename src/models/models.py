@@ -29,17 +29,16 @@ class Pemasukan(db.Model):
     __tablename__ = "pemasukan"
     id = db.Column(db.Integer, primary_key=True)
     tanggal = db.Column(db.DateTime, nullable=False)
-    # Use 'keterangan' here
     keterangan = db.Column(db.String(255), nullable=False)
-    nominal = db.Column(db.Integer, nullable=False)
+    jumlah = db.Column(db.Integer, nullable=False)
     created_on = db.Column(db.DateTime, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     user = db.relationship("User", backref=db.backref("pemasukan", lazy=True))
 
-    def __init__(self, tanggal, keterangan, nominal, user_id):
+    def __init__(self, tanggal, keterangan, jumlah, user_id):
         self.tanggal = tanggal
         self.keterangan = keterangan
-        self.nominal = nominal
+        self.jumlah = jumlah
         self.user_id = user_id
         self.created_on = datetime.now()
 
@@ -66,7 +65,7 @@ class Pengeluaran(db.Model):
         self.created_on = datetime.now()
 
     def __repr__(self):
-        return f"<keterangan {self.keterangan}>"
+        return f"<id {self.id}>"
 
 
 class Saldo(db.Model):
