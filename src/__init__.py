@@ -18,9 +18,13 @@ migrate = Migrate(app, db)
 
 from src.routes.auth import auth_bp
 from src.routes.views import dashboardBp
+from src.routes.pemasukan import pemasukanBp
+from src.routes.pengeluaran import pengeluaranBp
 
 app.register_blueprint(auth_bp)
 app.register_blueprint(dashboardBp)
+app.register_blueprint(pemasukanBp)
+app.register_blueprint(pengeluaranBp)
 
 from .models.models import User
 
@@ -30,4 +34,3 @@ login_manager.login_message_category = "danger"
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.filter(User.id == int(user_id)).first()
-

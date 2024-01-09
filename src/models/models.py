@@ -43,7 +43,7 @@ class Pemasukan(db.Model):
         self.created_on = datetime.now()
 
     def __repr__(self):
-        return f"<keterangan {self.keterangan}>"
+        return f"<id {self.id}>"
 
 
 class Pengeluaran(db.Model):
@@ -65,7 +65,7 @@ class Pengeluaran(db.Model):
         self.created_on = datetime.now()
 
     def __repr__(self):
-        return f"<keterangan {self.keterangan}>"
+        return f"<id {self.id}>"
 
 
 class Saldo(db.Model):

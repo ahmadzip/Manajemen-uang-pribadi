@@ -14,52 +14,55 @@
           </div>
         </div>
         <div class="flex-auto px-4 lg:px-10 py-10 pt-0 mt-3">
-          <form>
-            <div class="flex flex-wrap">
-              <div class="w-full lg:w-6/12 px-4">
-                <div class="relative w-full mb-3">
-                  <label
-                    class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                    for="nominal"
-                  >
-                    Nominal </label
-                  ><input
-                    type="text"
-                    id="dengan-rupiah"
-                    name="nominal"
-                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring focus:ring-blue-300 w-full ease-linear transition-all duration-150"
-                  />
+            <form method="post" action="/pemasukan" enctype="multipart/form-data">
+              <div class="flex flex-wrap">
+                <div class="w-full lg:w-6/12 px-4">
+                  <div class="relative w-full mb-3">
+                    <label
+                      class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                      for="nominal"
+                    >
+                      Nominal </label
+                    ><input
+                      type="text"
+                      id="dengan-rupiah"
+                      name="nominal"
+                      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring focus:ring-blue-300 w-full ease-linear transition-all duration-150"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div class="w-full lg:w-6/12 px-4">
-                <div class="relative w-full mb-3">
-                  <label
-                    class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                    for="tanggal"
-                  >
-                    Tanggal </label
-                  ><input
-                    type="date"
-                    id="tanggal"
-                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                  />
+                <div class="w-full lg:w-6/12 px-4">
+                  <div class="relative w-full mb-3">
+                    <label
+                      class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                      for="tanggal"
+                    >
+                      Tanggal </label
+                    ><input
+                      type="date"
+                      id="tanggal"
+                      name="tanggal"
+                      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div class="w-full lg:w-12/12 px-4">
-                <div class="relative w-full mb-3">
-                  <label
-                    class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                    for="grid-password"
-                  >
-                    Deskripsi </label
-                  ><textarea
-                    type="text"
-                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    rows="4"
-                  >
-                  </textarea>
+                <div class="w-full lg:w-12/12 px-4">
+                  <div class="relative w-full mb-3">
+                    <label
+                      class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                      for="grid-password"
+                    >
+                      Deskripsi </label
+                    ><textarea
+                      type="text"
+                      name="keterangan"
+                      id="deskripsi"
+                      class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                      rows="4"
+                    >
+                    </textarea>
+                  </div>
                 </div>
-              </div>
               <div class="w-full lg:w-12/12 px-4 text-right">
                 <div class="relative w-full mb-3">
                   <button
