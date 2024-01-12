@@ -44,7 +44,6 @@ $(document).ready(function () {
   });
 
   $toggleBtn.click(handleClick);
-  //format rupaiah input
   function formatRp(angka, prefix) {
     var number_string = angka.replace(/[^,\d]/g, "").toString(),
       split = number_string.split(","),

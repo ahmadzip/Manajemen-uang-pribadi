@@ -1,10 +1,14 @@
 {% extends "layout.html" %} {% block content %}
 
-<div class="text-center">
-  <h1>Welcome!</h1>
-  <p>
-    Resend confirmation email?&nbsp;&nbsp;
-    <a href="{{ url_for('auth.resend_confirmation') }}">Resend</a>.
+<div class="h-screen flex flex-col justify-center items-center">
+  <h1 class="text-4xl font-bold text-blue-700 mb-4">Welcome!</h1>
+  <p class="text-xl text-blue-600">
+    Need to resend the confirmation email?
+    <a
+      href="{{ url_for('auth.resend_confirmation') }}"
+      class="text-blue-500 underline hover:text-blue-800"
+      >Click here to Resend</a
+    >.
   </p>
 </div>
 

@@ -3,49 +3,26 @@
   <head>
     <meta charset="utf-8" />
     <title>Flask Finance Management</title>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://kit-pro.fontawesome.com/releases/v5.15.1/css/pro.min.css"
-    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.15.1/css/pro.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/global.css') }}"
-    />
+    <script type="text/javascript" src="{{ url_for('static', filename='js/global.js') }}"></script>
     {% block css %}{% endblock %}
   </head>
   <body class="bg-slate-100">
     <div>
-      {% if show_navbar|default(true) %} {% include "component/navigation.html"
-      %} {% endif %}
+      {% if show_navbar|default(true) %} {% include "component/navigation.html" %} {% endif %}
       <div id="flash-messages" style="display: none">
-        {% with messages = get_flashed_messages(with_categories=true) %} {% if
-        messages %} {% for category, message in messages %}
-        <input
-          type="hidden"
-          class="flash-message"
-          data-category="{{ category }}"
-          data-message="{{ message }}"
-        />
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %}
+        <input type="hidden" class="flash-message" data-category="{{ category }}" data-message="{{ message }}" />
         {% endfor %} {% endif %} {% endwith %}
       </div>
-      {% block content %}{% endblock %} {% if show_navbar|default(true) %} {%
-      include "component/footer.html" %} {% endif %}
+      {% block content %}{% endblock %} {% if show_navbar|default(true) %} {% include "component/footer.html" %} {% endif %}
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script
-      type="text/javascript"
-      src="{{ url_for('static', filename='js/global.js') }}"
-    ></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/toastify-js"
-    ></script>
     <script>
       document.querySelectorAll(".flash-message").forEach(function (input) {
         var category = input.getAttribute("data-category");

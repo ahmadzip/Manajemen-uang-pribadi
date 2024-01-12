@@ -1,11 +1,13 @@
 from flask_wtf import FlaskForm
-from wtforms import EmailField, PasswordField
+from wtforms import EmailField, PasswordField, IntegerField, DateTimeField, TextAreaField, SubmitField, DateTimeLocalField, StringField
 from wtforms.validators import DataRequired, Email, EqualTo, Length
 from src.models.models import User
+
 
 class LoginForm(FlaskForm):
     email = EmailField("Email", validators=[DataRequired(), Email()])
     password = PasswordField("Password", validators=[DataRequired()])
+
 
 class RegisterForm(FlaskForm):
     email = EmailField(
@@ -32,5 +34,56 @@ class RegisterForm(FlaskForm):
             return False
         if self.password.data != self.confirm.data:
             self.password.errors.append("Passwords must match")
+            return False
+        return True
+
+
+class PemasukanForm(FlaskForm):
+    nominal = StringField("Nominal", validators=[
+                          DataRequired()])
+    tanggal = DateTimeLocalField("Tanggal", validators=[
+                                 DataRequired()], format='%Y-%m-%dT%H:%M:%S')
+    keterangan = TextAreaField(
+        "Keterangan", validators=[DataRequired()]
+    )
+    submit = SubmitField("Submit")
+
+    def validate(self):
+        initial_validation = super(PemasukanForm, self).validate()
+        if not initial_validation:
+            return False
+        return True
+
+
+class PengeluaranForm(FlaskForm):
+    nominal = StringField("Nominal", validators=[
+                          DataRequired()])
+    tanggal = DateTimeLocalField("Tanggal", validators=[
+                                 DataRequired()], format='%Y-%m-%dT%H:%M:%S')
+    keterangan = TextAreaField(
+        "Keterangan", validators=[DataRequired()]
+    )
+    submit = SubmitField("Submit")
+
+    def validate(self):
+        initial_validation = super(PengeluaranForm, self).validate()
+        if not initial_validation:
+            return False
+        return True
+
+
+class EditPemasukanForm(FlaskForm):
+    nominal = StringField("Nominal", validators=[
+                          DataRequired()])
+    tanggal = DateTimeLocalField("Tanggal", validators=[
+                                 DataRequired()], format='%Y-%m-%dT%H:%M:%S')
+    keterangan = StringField(
+        "Keterangan"
+    )
+    submit = SubmitField("Submit")
+
+    def validate(self):
+        initial_validation = super(EditPemasukanForm, self).validate()
+        if not initial_validation:
             return False
         return True
