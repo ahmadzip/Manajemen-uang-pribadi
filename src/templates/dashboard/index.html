@@ -1,5 +1,5 @@
 {% extends "layout.html" %} {% block content %}
-<div class="bg-slate-100 px-4 md:px-10 mx-auto w-full -m-24 mt-20">
+<div class="bg-slate-100 px-4 md:px-10 mx-auto w-full mt-20 mb-14">
   <div>
     <div class="relative bg-blueGray-100">
       <div class="mx-auto w-full mt-5">
@@ -17,10 +17,10 @@
                       class="relative w-full pr-4 max-w-full flex-grow flex-1"
                     >
                       <h5 class="text-blueGray-400 uppercase font-bold text-sm">
-                        Pemasukan Bulan Ini
+                        Saldo
                       </h5>
                       <span class="font-semibold text-2xl text-blueGray-700"
-                        >Rp. 2.356.000</span
+                        >Rp. {{ '{:,.0f}'.format(saldo) }}</span
                       >
                     </div>
                     <div class="relative w-auto pl-4 flex-initial">
@@ -33,10 +33,20 @@
                   </div>
                 </div>
                 <p class="text-base text-blueGray-400 m-3">
-                  <span class="mr-2 text-emerald-500"
-                    ><i class="fas fa-arrow-up"></i> 3%
-                  </span>
-                  <span class="whitespace-nowrap">Bulan Lalu</span>
+                  <span class="mr-2">
+                      {% if saldo_kemarin_percent is defined and saldo_kemarin_percent is number %}
+                          {% if saldo_kemarin_percent < 0 %}
+                              <i class="fas fa-arrow-down text-red-500"></i> {{ saldo_kemarin_percent }}%
+                          {% elif saldo_kemarin_percent > 0 %}
+                              <i class="fas fa-arrow-up text-emerald-500"></i> {{ saldo_kemarin_percent }}%
+                          {% else %}
+                              {{ saldo_kemarin_percent }}%
+                          {% endif %}
+                      {% else %}
+                        Data tidak valid
+                      {% endif %}
+                </span>
+                  <span class="whitespace-nowrap">Dari Kemarin</span>
                 </p>
               </div>
             </div>
@@ -52,10 +62,10 @@
                       class="relative w-full pr-4 max-w-full flex-grow flex-1"
                     >
                       <h5 class="text-blueGray-400 uppercase font-bold text-sm">
-                        Pengeluaran Bulan Ini
+                        Pengeluaran Hari ini
                       </h5>
                       <span class="font-semibold text-2xl text-blueGray-700"
-                        >Rp. 1.356.000</span
+                        >Rp. {{ '{:,.0f}'.format(pengeluaran_hari_ini) }}</span
                       >
                     </div>
                     <div class="relative w-auto pl-4 flex-initial">
@@ -67,10 +77,21 @@
                     </div>
                   </div>
                 </div>
-                <p class="text-base text-blueGray-400 mt-4 m-3">
-                  <span class="mr-2 text-red-500"
-                    ><i class="fas fa-arrow-down"></i> 1% </span
-                  ><span class="whitespace-nowrap">Bulan Lalu</span>
+                <p class="text-base text-blueGray-400 m-3">
+                  <span class="mr-2">
+                    {% if pengeluaran_kemarin_percent is defined and pengeluaran_kemarin_percent is number %}
+                          {% if pengeluaran_kemarin_percent < 0 %}
+                              <i class="fas fa-arrow-down text-red-500"></i> {{ pengeluaran_kemarin_percent }}%
+                          {% elif pengeluaran_kemarin_percent > 0 %}
+                              <i class="fas fa-arrow-up text-emerald-500"></i> {{ pengeluaran_kemarin_percent }}%
+                          {% else %}
+                              {{ pengeluaran_kemarin_percent }}%
+                          {% endif %}
+                      {% else %}
+                        Data tidak valid
+                      {% endif %}
+                </span>
+                  <span class="whitespace-nowrap">Dari Kemarin</span>
                 </p>
               </div>
             </div>
@@ -86,10 +107,10 @@
                       class="relative w-full pr-4 max-w-full flex-grow flex-1"
                     >
                       <h5 class="text-blueGray-400 uppercase font-bold text-sm">
-                        Pengeluaran Hari Ini
+                        Pemasukan Hari ini
                       </h5>
                       <span class="font-semibold text-2xl text-blueGray-700"
-                        >924</span
+                        >Rp. {{ '{:,.0f}'.format(pemasukan_hari_ini) }}</span
                       >
                     </div>
                     <div class="relative w-auto pl-4 flex-initial">
@@ -101,10 +122,21 @@
                     </div>
                   </div>
                 </div>
-                <p class="text-base text-blueGray-400 mt-4 m-3">
-                  <span class="mr-2 text-orange-500"
-                    ><i class="fas fa-arrow-down"></i> 1% </span
-                  ><span class="whitespace-nowrap">Kemarin</span>
+                <p class="text-base text-blueGray-400 m-3">
+                  <span class="mr-2">
+                      {% if pemasukan_kemarin_percent is defined and pemasukan_kemarin_percent is number %}
+                          {% if pemasukan_kemarin_percent < 0 %}
+                              <i class="fas fa-arrow-down text-red-500"></i> {{ pemasukan_kemarin_percent }}%
+                          {% elif pemasukan_kemarin_percent > 0 %}
+                              <i class="fas fa-arrow-up text-emerald-500"></i> {{ pemasukan_kemarin_percent }}%
+                          {% else %}
+                              {{ pemasukan_kemarin_percent }}%
+                          {% endif %}
+                      {% else %}
+                        Data tidak valid
+                      {% endif %}
+                  </span>
+                  <span class="whitespace-nowrap">Dari Kemarin</span>
                 </p>
               </div>
             </div>
@@ -123,7 +155,7 @@
                         Pengeluaran Kemarin
                       </h5>
                       <span class="font-semibold text-2xl text-blueGray-700"
-                        >49,65%</span
+                        >Rp. {{ '{:,.0f}'.format(pengeluaran_kemarin) }}</span
                       >
                     </div>
                     <div class="relative w-auto pl-4 flex-initial">
@@ -136,9 +168,20 @@
                   </div>
                 </div>
                 <p class="text-base text-blueGray-400 mt-4 m-3">
-                  <span class="mr-2 text-emerald-500"
-                    ><i class="fas fa-arrow-up"></i> 1% </span
-                  ><span class="whitespace-nowrap">Kemarin lusa</span>
+                  <span class="mr-2">
+                      {% if pengeluaran_kemarin_luas_percent is defined and pengeluaran_kemarin_luas_percent is number %}
+                          {% if pengeluaran_kemarin_luas_percent < 0 %}
+                              <i class="fas fa-arrow-down text-red-500"></i> {{ pengeluaran_kemarin_luas_percent }}%
+                          {% elif pengeluaran_kemarin_luas_percent > 0 %}
+                              <i class="fas fa-arrow-up text-emerald-500"></i> {{ pengeluaran_kemarin_luas_percent }}%
+                          {% else %}
+                              {{ pengeluaran_kemarin_luas_percent }}%
+                          {% endif %}
+                      {% else %}
+                        Data tidak valid
+                      {% endif %}
+                    </span>
+                    <span class="whitespace-nowrap">Kemarin lusa</span>
                 </p>
               </div>
             </div>
@@ -146,6 +189,29 @@
         </div>
       </div>
     </div>
+    <div class="flex flex-wrap">
+      <div class="w-full xl:w-full xl:mb-0 px-4">
+        <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white">
+          <div class="rounded-t mb-0 px-4 py-3">
+            <div class="flex flex-wrap items-center">
+              <div class="relative w-full max-w-full flex-grow flex-1">
+                <h3 class="uppercase text-blueGray-400 mb-1 ml-3 text-xl font-semibold">
+                  Overview
+                </h6>
+              </div>
+            </div>
+            <div class="p-4 flex-auto">
+              <div class="relative h-350-px">
+                <div class="chartjs-size-monitor">
+                  <canvas id="chart-line" width="1000" height="350" class="chartjs-render-monitor" style="display: block; width: 1000px; height: 350px;"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="mx-auto w-full mt-5">
       <div class="flex flex-wrap mt-4">
         <div class="w-full lg:mb-12 xl:mb-0 px-4">
@@ -195,86 +261,57 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th
-                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 text-left"
-                    >
-                      <i class="fas fa-arrow-down text-green-600 mr-4"></i>
-                      Pemasukan
-                    </th>
-                    <td
-                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4"
-                    >
-                      Rp. 2.356.000
-                    </td>
-                    <td
-                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4"
-                    >
-                      23/10/2021
-                    </td>
-                    <td
-                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4"
-                    >
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Vestibulum euismod.
-                    </td>
-                    <td
-                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4"
-                    >
-                      <a
-                        href="javascript:void(0)"
-                        class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  {% for row in gabungkan %}
+                  <p>
+                    </p>  
+                    <tr>
+                      <th
+                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 text-left"
                       >
-                        <i class="fas fa-edit"></i> Edit
-                      </a>
-                      <a
-                        href="javascript:void(0)"
-                        class="inline-block bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2"
+                        {% if row.type == 'pemasukan' %}
+                          <i class="fas fa-arrow-down text-emerald-500 mr-4"></i>
+
+                        {% else %}
+                          <i class="fas fa-arrow-up text-red-500 mr-4"></i>
+                        {% endif %}
+                        {{ row.type }}
+                      </th>
+                      <td
+                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4"
                       >
-                        <i class="fas fa-trash"></i> Hapus
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th
-                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 text-left"
-                    >
-                      <i class="fas fa-arrow-up text-red-600 mr-4"></i>
-                      Pengeluaran
-                    </th>
-                    <td
-                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4"
-                    >
-                      Rp. 1.356.000
-                    </td>
-                    <td
-                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4"
-                    >
-                      23/10/2021
-                    </td>
-                    <td
-                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4"
-                    >
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Nam laoreet.
-                    </td>
-                    <td
-                      class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4"
-                    >
-                      <a
-                        href="javascript:void(0)"
-                        class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                        Rp. {{ '{:,.0f}'.format(row.jumlah) }}
+                      </td>
+                      <td
+                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4"
                       >
-                        <i class="fas fa-edit"></i> Edit
-                      </a>
-                      <a
-                        href="javascript:void(0)"
-                        class="inline-block bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2"
+                        {{ row.tanggal }}
+                      </td>
+                      <td
+                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4"
                       >
-                        <i class="fas fa-trash"></i> Hapus
-                      </a>
-                    </td>
-                  </tr>
+                        {{ row.keterangan }}
+                      </td>
+                      <td
+                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4"
+                      >
+                        <a
+                          href="/edit/{{ row.id }}"
+                          class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                        >
+                          <i class="fas fa-edit"></i> Edit
+                        </a>
+                        <button
+                          onclick="deleteData(`{{ row.id }}`)"
+                          id="delete"
+                          class="inline-block bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2"
+                        >
+                          <i class="fas fa-trash"></i> Hapus
+                        </button>
+                      </td>
+                    </tr>
+                    {% endfor %}
+
+                  </p>
                 </tbody>
               </table>
             </div>
@@ -284,4 +321,81 @@
     </div>
   </div>
 </div>
+<script>
+  function deleteData(id) {
+    console.log(id)
+    fetch("delete/" + id, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res)
+        if (res.status == "success") {
+          window.location.reload();
+        } else {
+          alert("Gagal menghapus data");
+        }
+      }
+      );
+  }
+</script>
+<script>
+
+  let dataPemasukanString = "{{ daily_pemasukan_data_list }}";
+  let dataPengeluaranString = "{{ daily_pengeluaran_data_list }}";
+  let dataPemasukan = JSON.parse(dataPemasukanString);
+  let dataPengeluaran = JSON.parse(dataPengeluaranString);
+  let newDataPemasukan = dataPemasukan.map((value) => value);
+  let newDataPengeluaran = dataPengeluaran.map((value) => value);
+
+  var ctx = document.getElementById("chart-line").getContext("2d");
+  if (ctx) {
+    var myChart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: [
+          "Senin",
+          "Selasa",
+          "Rabu",
+          "Kamis",
+          "Jumat",
+          "Sabtu",
+          "Minggu",
+        ],
+        datasets: [
+          {
+            label: "Pemasukan",
+            data: newDataPemasukan,
+            backgroundColor: "rgba(3, 144, 252, 1)",
+            borderColor: "rgba(3, 144, 252, 1)",
+          },
+          {
+            label: "Pengeluaran",
+            data: newDataPengeluaran,
+            backgroundColor: "rgba(252, 3, 3, 1)",
+            borderColor: "rgba(252, 3, 3, 1)",
+          },
+        ],
+      },
+      options: {
+        animations: {
+          tension: {
+            duration: 4000,
+            easing: "easeInOutBounce",
+            from: 1,
+            to: 0,
+            loop: true,
+          },
+        },
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+  }
+</script>
 {% endblock %}

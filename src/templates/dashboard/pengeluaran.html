@@ -1,6 +1,6 @@
 {% extends "layout.html" %} {% block content %}
 
-<div class="px-4 md:px-10 mx-auto w-full -m-24 mt-20">
+<div class="px-4 md:px-10 mx-auto w-full mt-20 mb-20">
   <div class="flex flex-wrap">
     <div class="w-full lg:w-8/12 px-4">
       <div
@@ -23,57 +23,52 @@
             <div class="flex flex-wrap">
               <div class="w-full lg:w-6/12 px-4">
                 <div class="relative w-full mb-3">
-                  <label
-                    class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                    for="nominal"
-                  >
-                    Nominal </label
-                  ><input
-                    type="text"
-                    id="dengan-rupiah"
-                    name="nominal"
-                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring focus:ring-blue-300 w-full ease-linear transition-all duration-150"
-                  />
+                  {{ form.nominal.label(class="block uppercase text-blueGray-600
+                  text-xs font-bold mb-2") }} {{
+                  form.nominal(id="dengan-rupiah", placeholder="Masukan Nominal", class="border-0 px-3 py-3 placeholder-blueGray-300
+                  text-blueGray-600 bg-white rounded text-sm shadow
+                  focus:outline-none focus:ring focus:ring-blue-300 w-full
+                  ease-linear transition-all duration-150") }} {% if
+                  form.nominal.errors %} {% for error in form.nominal.errors %}
+                  <div class="alert alert-danger" role="alert">{{ error }}</div>
+                  {% endfor %} {% endif %}
                 </div>
               </div>
               <div class="w-full lg:w-6/12 px-4">
                 <div class="relative w-full mb-3">
-                  <label
-                    class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                    for="tanggal"
-                  >
-                    Tanggal </label
-                  ><input
-                    type="date"
-                    name="tanggal"
-                    id="tanggal"
-                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                  />
+                  {{ form.tanggal.label(class="block uppercase text-blueGray-600
+                  text-xs font-bold mb-2") }} {{ form.tanggal(class="border-0
+                  px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white
+                  rounded text-sm shadow focus:outline-none focus:ring w-full
+                  ease-linear transition-all duration-150") }} {% if
+                  form.tanggal.errors %} {% for error in form.tanggal.errors %}
+                  <div class="alert alert-danger" role="alert">{{ error }}</div>
+                  {% endfor %} {% endif %}
                 </div>
               </div>
               <div class="w-full lg:w-12/12 px-4">
                 <div class="relative w-full mb-3">
-                  <label
-                    class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                    for="grid-password"
-                  >
-                    Deskripsi </label
-                  ><textarea
-                    type="text"
-                    name="deskripsi"
-                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    rows="4"
-                  >
-                  </textarea>
+                  {{ form.keterangan.label(class="block uppercase
+                  text-blueGray-600 text-xs font-bold mb-2") }} {{
+                  form.keterangan(class="border-0 px-3 py-3
+                  placeholder-blueGray-300 text-blueGray-600 bg-white rounded
+                  text-sm shadow focus:outline-none focus:ring w-full
+                  ease-linear transition-all duration-150") }} {% if
+                  form.keterangan.errors %} {% for error in
+                  form.keterangan.errors %}
+                  <div class="alert alert-danger" role="alert">{{ error }}</div>
+                  {% endfor %} {% endif %}
                 </div>
               </div>
               <div class="w-full lg:w-12/12 px-4 text-right">
                 <div class="relative w-full mb-3">
-                  <button
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded"
-                  >
-                    Tambah
-                  </button>
+                  <div class="relative w-full mb-3">
+                    {{ form.submit(class="bg-emerald-500 text-white
+                    active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2
+                    rounded shadow hover:shadow-md outline-none
+                    focus:outline-none mr-1 mb-1 ease-linear transition-all
+                    duration-150") }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -94,6 +89,113 @@
             <p>2. MASKAN DESKRIPSI SEUSAIKAN DENGAN PENGELUARAN ANDA</p>
             <p>3. PILIH TANGGAL</p>
             <p>5. KLIK TOMBOL TAMBAH</p>
+          </div>
+        </div>
+      </div>
+    </div>
+            <div class="mx-auto w-full mt-5">
+      <div class="flex flex-wrap mt-4">
+        <div class="w-full lg:mb-12 xl:mb-0 px-4">
+          <div
+            class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded"
+          >
+            <div
+              class="rounded-t mb-0 px-4 py-3 border-b-2 border-blueGray-200"
+            >
+              <div class="flex flex-wrap items-center justify-between">
+                <div class="w-full px-4 max-w-full flex-grow flex-1">
+                  <h3 class="font-semibold text-xl text-blueGray-700">
+                    Log Aktivitas
+                  </h3>
+                </div>
+              </div>
+            </div>
+            <div class="block w-full overflow-x-auto">
+              <table class="items-center w-full bg-transparent border-collapse">
+                <thead>
+                  <tr>
+                    <th
+                      class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-sm uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                    >
+                      Type
+                    </th>
+                    <th
+                      class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-sm uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                    >
+                      Nominal
+                    </th>
+                    <th
+                      class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-sm uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                    >
+                      Tanggal
+                    </th>
+                    <th
+                      class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-sm uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                    >
+                      Deskripsi
+                    </th>
+                    <th
+                      class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-sm uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                    >
+                      Aksi
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for row in gabungkan %}
+                  <p>
+                    </p>  
+                    <tr>
+                      <th
+                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4 text-left"
+                      >
+                        {% if row.type == 'pemasukan' %}
+                          <i class="fas fa-arrow-down text-emerald-500 mr-4"></i>
+
+                        {% else %}
+                          <i class="fas fa-arrow-up text-red-500 mr-4"></i>
+                        {% endif %}
+                        {{ row.type }}
+                      </th>
+                      <td
+                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4"
+                      >
+                        Rp. {{ '{:,.0f}'.format(row.jumlah) }}
+                      </td>
+                      <td
+                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4"
+                      >
+                        {{ row.tanggal }}
+                      </td>
+                      <td
+                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4"
+                      >
+                        {{ row.keterangan }}
+                      </td>
+                      <td
+                        class="border-t-0 px-6 align-middle border-l-0 border-r-0 whitespace-nowrap p-4"
+                      >
+                        <a
+                          href="/edit/{{ row.id }}"
+                          class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                        >
+                          <i class="fas fa-edit"></i> Edit
+                        </a>
+                        <button
+                          onclick="deleteData(`{{ row.id }}`)"
+                          id="delete"
+                          class="inline-block bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2"
+                        >
+                          <i class="fas fa-trash"></i> Hapus
+                        </button>
+                      </td>
+                    </tr>
+                    {% endfor %}
+
+                  </p>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

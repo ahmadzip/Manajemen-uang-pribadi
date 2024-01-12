@@ -85,4 +85,4 @@ class Saldo(db.Model):
         self.created_on = datetime.now()
 
     def __repr__(self):
-        return f"<saldo {self.saldo}>"
+        return f"<saldo {self.id}>"

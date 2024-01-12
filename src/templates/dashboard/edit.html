@@ -1,0 +1,86 @@
+{% extends "layout.html" %} {% block content %}
+
+<div class="px-4 md:px-10 mx-auto w-full mt-20 mb-20">
+  <div class="flex flex-wrap">
+    <div class="w-full lg:w-8/12 px-4">
+      <div
+        class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0"
+      >
+        <div class="rounded-t bg-white mb-0 px-6 py-6">
+          <div class="text-center flex justify-between">
+            <h6 class="text-blueGray-700 text-xl font-bold">
+                <i class="fas fa-arrow-down text-emerald-500 mr-2"></i>
+                <span class="mr-3">Input Pemasukan</span>
+          </div>
+        </div>
+        <div class="flex-auto px-4 lg:px-10 py-10 pt-0 mt-3">
+          <form method="post" action="/edit/{{ data.id }}" enctype="multipart/form-data">
+            <div class="flex flex-wrap">
+                <div class="w-full lg:w-6/12 px-4">
+                    <div class="relative w-full mb-3">
+                        {{ form.nominal.label(class="block uppercase text-blueGray-600 text-xs font-bold mb-2") }} 
+                        {{ form.nominal(value= data.jumlah ,id="dengan-rupiah", placeholder="Masukan Nominal", class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring focus:ring-blue-300 w-full ease-linear transition-all duration-150") }} 
+                        {% if form.nominal.errors %} {% for error in form.nominal.errors %}
+                        <div class="alert alert-danger" role="alert">{{ error }}</div>
+                        {% endfor %} {% endif %}
+                    </div>
+                </div>
+                <div class="w-full lg:w-6/12 px-4">
+                  <div class="relative w-full mb-3">
+                      {{ form.tanggal.label(class="block uppercase text-blueGray-600 text-xs font-bold mb-2") }} 
+                      {{ form.tanggal(value=data.tanggal, class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150") }} 
+                      {% if form.tanggal.errors %} {% for error in form.tanggal.errors %}
+                      <div class="alert alert-danger" role="alert">{{ error }}</div>
+                      {% endfor %} {% endif %}
+                  </div>
+              </div>
+                <div class="w-full lg:w-12/12 px-4">
+                    <div class="relative w-full mb-3">
+                        {{ form.keterangan.label(class="block uppercase text-blueGray-600 text-xs font-bold mb-2") }} 
+                        {{ form.keterangan(class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150", value=data.keterangan, placeholder=data.keterangan)}}
+                        {% if form.keterangan.errors %} {% for error in form.keterangan.errors %}
+                        <div class="alert alert-danger" role="alert">{{ error }}</div>
+                        {% endfor %} {% endif %}
+                      </div>
+                </div>
+                <div class="w-full lg:w-12/12 px-4 text-right">
+                    <div class="relative w-full mb-3">
+
+                        {{ form.submit(class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150") }}
+                      </div>
+                </div>
+            </div>
+        </form>
+
+        </div>
+      </div>
+    </div>
+    <div class="w-full lg:w-4/12 px-4">
+      <div
+        class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg"
+      >
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2 text-blueGray-700 text-center">
+            PENGGUNAAN
+          </div>
+          <div class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+            <p>1. MASUKAN ANGKA NOMINAL</p>
+            <p>2. MASKAN DESKRIPSI SEUSAIKAN DENGAN PENGELUARAN ANDA</p>
+            <p>3. PILIH TANGGAL</p>
+            <p>5. KLIK TOMBOL TAMBAH</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var textarea = document.getElementById("keterangan");
+        if (textarea) {
+            textarea.textContent = textarea.getAttribute("data-default-value");
+            textarea.value = textarea.getAttribute("data-default-value");
+        }
+    });
+</script>
+{% endblock %}
